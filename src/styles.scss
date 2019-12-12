@@ -1,0 +1,55 @@
+@import "../node_modules/sass-rem/rem";
+@import url("https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap");
+
+$gray: darken(#fff,32%);
+$gray-dark: darken(#fff,86%);
+$gray-light: darken(#fff,82%);
+
+
+@mixin padSize($size, $position) {
+  width: rem($size);
+  height: rem($size);
+  line-height: rem($size);
+  align-self: $position;
+  justify-self: $position;
+  text-align: $position;
+}
+
+@mixin DRY($color, $scale) {
+  transition: all 200ms;
+  cursor: pointer;
+  border: rem(3px solid $color);
+  transform: scale($scale);
+}
+
+body {
+  background: $gray-light;
+  font-family: "Baloo Bhai", sans-serif;
+  text-align: center;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: rem(10px);
+  grid-row-gap: rem(10px);
+  max-width: rem(380px);
+  margin: 0 auto;
+  margin-top: rem(20px);
+  padding: rem(5px);
+
+  .pad {
+    background-image: linear-gradient(to right, $gray-dark 0%, $gray-light 100%);
+    box-shadow: rem(0 0 6px black);
+    border-radius: rem(8px);
+    color: $gray;
+    @include padSize(80px, center);
+    @include DRY($gray-dark, 1);
+  }
+  .playing {@include DRY(OrangeRed, 1.06);}
+}
+.display {
+  font-size: rem(48px);
+  font-weight: 700;
+  color: $gray;
+  margin: none;
+}
